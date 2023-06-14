@@ -1,0 +1,32 @@
+export const comands = [
+  {
+    id: "1",
+    nameComand: "Polupan & Pavlov",
+    userFotoOne: "https://www.gravatar.com/avatar/",
+    userFotoTwo: "https://www.gravatar.com/avatar/",
+    fioOne: "Yurii Polupan",
+    fioTwo: "Sergey Pavlov",
+    countOfWin: 10,
+    countOfCups: 5,
+  },
+  {
+    id: "2",
+    nameComand: "Belik & Fesenko",
+    userFotoOne: "https://www.gravatar.com/avatar/",
+    userFotoTwo: "https://www.gravatar.com/avatar/",
+    fioOne: "Oleksandr Belik",
+    fioTwo: "Mikhail Fesenko",
+    countOfWin: 10,
+    countOfCups: 5,
+  },
+  {
+    id: "3",
+    nameComand: "Novikov & Garyachov",
+    userFotoOne: "https://www.gravatar.com/avatar/",
+    userFotoTwo: "https://www.gravatar.com/avatar/",
+    fioOne: "Oleksandr Novikov",
+    fioTwo: "Yurii Garyachov",
+    countOfWin: 10,
+    countOfCups: 5,
+  },
+];

@@ -1,11 +1,9 @@
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
+import UserRoutes from "./UseRoutes/UserRoutes";
 
 function App() {
   return (
     <div className="container">
-      <Header />
-      <Footer />
+      <UserRoutes />
     </div>
   );
 }

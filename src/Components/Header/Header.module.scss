@@ -39,4 +39,10 @@
 .nav_item {
   display: inline;
   margin-right: 25px;
+  cursor: pointer;
+  transition: opacity 500ms ease;
+}
+.nav_item:hover,
+.nav_item:focus {
+  opacity: 0.5;
 }

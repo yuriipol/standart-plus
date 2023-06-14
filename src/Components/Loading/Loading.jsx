@@ -1,11 +1,5 @@
-import Spinner from "react-bootstrap/Spinner";
-
-function Loading() {
-  return (
-    <>
-      <Spinner animation="border" variant="warning" />
-    </>
-  );
-}
+const Loading = () => {
+  return <h1>LOADING.......</h1>;
+};
 
 export default Loading;

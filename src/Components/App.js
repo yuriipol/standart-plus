@@ -1,7 +1,11 @@
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+
 function App() {
   return (
-    <div className="App">
-      <h1>POLUPAN</h1>
+    <div className="container">
+      <Header />
+      <Footer />
     </div>
   );
 }

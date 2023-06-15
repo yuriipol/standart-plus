@@ -1,0 +1,36 @@
+import s from "./Products.module.scss";
+import { products } from "../../Shared/Servises/products";
+import { nanoid } from "nanoid";
+
+const Products = () => {
+  const data = JSON.parse(products);
+  const addId = (data) => {
+    for (const item of data) {
+      item.id = nanoid();
+    }
+  };
+  addId(data);
+
+  //   console.log(data);
+
+  const productItem = data?.map(
+    ({ id, gallery, name, country, description, price }) => (
+      <li className={s.productItem} key={id}>
+        <img className={s.image} src={gallery[0]} alt={name} />
+        <h2 className={s.name}>{name}</h2>
+        <h3 className={s.country}>{country}</h3>
+        <b className={s.price}>Ціна: {price} грн.</b>
+        <p className={s.discription}>{description}</p>
+        <div className={s.add_to_card}>+</div>
+      </li>
+    )
+  );
+
+  return (
+    <main>
+      <ul className={s.products}>{productItem}</ul>
+    </main>
+  );
+};
+
+export default Products;

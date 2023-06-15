@@ -40,9 +40,22 @@
   display: inline;
   margin-right: 25px;
   cursor: pointer;
-  transition: opacity 500ms ease;
+  transition: opacity, color 500ms ease;
 }
 .nav_item:hover,
 .nav_item:focus {
   opacity: 0.5;
+  color: #1f8714;
+}
+.shoppingCartButton {
+  float: right;
+  cursor: pointer;
+  margin-right: 25px;
+  transition: color, transform 500ms ease;
+  &:hover,
+  &:focus,
+  &.active {
+    color: #1f8714;
+    transform: scale(1.5);
+  }
 }

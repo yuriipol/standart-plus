@@ -2,14 +2,16 @@ import { useState } from "react";
 import s from "./Header.module.scss";
 import { FaShoppingCart } from "react-icons/fa";
 import Modal from "../Modal/Modal";
+import Order from "../Order/Order";
 
-const Header = () => {
+const Header = ({ searchProducts }) => {
   const [cartOpen, setCartOpen] = useState(false);
   // console.log(cartOpen);
 
   const toggleModal = () => {
     setCartOpen(!cartOpen);
   };
+  // console.log(searchProducts);
   return (
     <header>
       <span className={s.logo}>Standart +</span>
@@ -31,6 +33,15 @@ const Header = () => {
       {cartOpen && (
         <Modal onClose={toggleModal}>
           <h2>КОРЗИНА</h2>
+          {searchProducts.length > 0 ? (
+            <ul>
+              {searchProducts?.map((item) => (
+                <Order key={item.id} item={item} />
+              ))}
+            </ul>
+          ) : (
+            <h2 className={s.pusto}>Товари відсутні</h2>
+          )}
           <button
             type="button"
             onClick={toggleModal}

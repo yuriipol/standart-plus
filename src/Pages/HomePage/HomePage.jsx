@@ -10,6 +10,7 @@ import s from "./HomePage.module.scss";
 const HomePage = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const [tovar, setTovar] = useState([]);
+  // const [isArray, setIsArray] = useState(false);
 
   const addInputdata = (products) => {
     const data = JSON.parse(products);
@@ -24,17 +25,21 @@ const HomePage = () => {
   // console.log(tovar);
 
   const findIdProduct = (event) => {
-    const findInfo = tovar.find((item) => item.id === event.currentTarget.id);
-    setSearchProducts([...searchProducts, findInfo]);
-    // if (event.target.tagName !== "BUTTON") {
-    //   toggleModal();
-    // }
-  };
+    const findProduct = tovar.find(
+      (item) => item.id === event.currentTarget.id
+    );
+    const dublicate = searchProducts.find(
+      (element) => element.id === findProduct.id
+    );
 
+    if (!dublicate) {
+      setSearchProducts([...searchProducts, findProduct]);
+    }
+  };
   return (
     <div className="container">
       <h1 className={s.title}>"HOME PAGE"</h1>
-      <Header />
+      <Header searchProducts={searchProducts} />
       <Products data={tovar} findIdProduct={findIdProduct} />
       <Footer />
     </div>

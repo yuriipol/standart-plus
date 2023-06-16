@@ -25,8 +25,7 @@ const HomePage = () => {
 
   const findIdProduct = (event) => {
     const findInfo = tovar.find((item) => item.id === event.currentTarget.id);
-    setSearchProducts((prevstate) => [...findInfo]);
-    console.log(searchProducts);
+    setSearchProducts([...searchProducts, findInfo]);
     // if (event.target.tagName !== "BUTTON") {
     //   toggleModal();
     // }

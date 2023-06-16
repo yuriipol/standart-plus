@@ -5,7 +5,8 @@ import Modal from "../Modal/Modal";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  console.log(cartOpen);
+  // console.log(cartOpen);
+
   const toggleModal = () => {
     setCartOpen(!cartOpen);
   };

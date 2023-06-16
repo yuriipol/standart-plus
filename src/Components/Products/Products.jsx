@@ -1,21 +1,11 @@
 import s from "./Products.module.scss";
-import { products } from "../../Shared/Servises/products";
-import { nanoid } from "nanoid";
 
-const Products = () => {
-  const data = JSON.parse(products);
-  const addId = (data) => {
-    for (const item of data) {
-      item.id = nanoid();
-    }
-  };
-  addId(data);
-
+const Products = ({ data, findIdProduct }) => {
   //   console.log(data);
 
   const productItem = data?.map(
     ({ id, gallery, name, country, description, price }) => (
-      <li className={s.productItem} key={id}>
+      <li className={s.productItem} key={id} onClick={findIdProduct} id={id}>
         <img className={s.image} src={gallery[0]} alt={name} />
         <h2 className={s.name}>{name}</h2>
         <h3 className={s.country}>{country}</h3>

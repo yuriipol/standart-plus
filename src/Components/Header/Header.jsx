@@ -32,7 +32,7 @@ const Header = ({ searchProducts }) => {
       <div className={s.baner}></div>
       {cartOpen && (
         <Modal onClose={toggleModal}>
-          <h2>КОРЗИНА</h2>
+          <h2 className={s.title}>КОРЗИНА</h2>
           {searchProducts.length > 0 ? (
             <ul>
               {searchProducts?.map((item) => (

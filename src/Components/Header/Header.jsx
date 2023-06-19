@@ -1,10 +1,13 @@
 import { useState } from "react";
 import s from "./Header.module.scss";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaWindowClose } from "react-icons/fa";
 import Modal from "../Modal/Modal";
 import Order from "../Order/Order";
 
-const Header = ({ searchProducts }) => {
+const Header = ({ searchProducts, deleteOrder }) => {
+  let sum = 0;
+  searchProducts.forEach((el) => (sum += Number.parseFloat(el.price)));
+
   const [cartOpen, setCartOpen] = useState(false);
   // console.log(cartOpen);
 
@@ -32,23 +35,21 @@ const Header = ({ searchProducts }) => {
       <div className={s.baner}></div>
       {cartOpen && (
         <Modal onClose={toggleModal}>
-          <h2 className={s.title}>КОРЗИНА</h2>
-          {searchProducts.length > 0 ? (
-            <ul>
-              {searchProducts?.map((item) => (
-                <Order key={item.id} item={item} />
-              ))}
-            </ul>
-          ) : (
-            <h2 className={s.pusto}>Товари відсутні</h2>
-          )}
-          <button
-            type="button"
-            onClick={toggleModal}
-            className={s.modal__close}
-          >
-            close
-          </button>
+          <div className={s.modalContent}>
+            <h2 className={s.title}>КОРЗИНА</h2>
+
+            {searchProducts.length > 0 ? (
+              <ul>
+                {searchProducts?.map((item) => (
+                  <Order key={item.id} item={item} deleteOrder={deleteOrder} />
+                ))}
+                <p className={s.sum}>Загальна сума: {sum.toFixed(2)} грн.</p>
+              </ul>
+            ) : (
+              <h2 className={s.pusto}>Товари відсутні</h2>
+            )}
+            <FaWindowClose onClick={toggleModal} className={s.modal__close} />
+          </div>
         </Modal>
       )}
     </header>

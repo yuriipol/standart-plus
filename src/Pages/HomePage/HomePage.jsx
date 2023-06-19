@@ -36,10 +36,14 @@ const HomePage = () => {
       setSearchProducts([...searchProducts, findProduct]);
     }
   };
+  const deleteOrder = (id) => {
+    const delProduct = searchProducts.filter((item) => item.id !== id);
+    setSearchProducts(delProduct);
+  };
   return (
     <div className="container">
       <h1 className={s.title}>"HOME PAGE"</h1>
-      <Header searchProducts={searchProducts} />
+      <Header searchProducts={searchProducts} deleteOrder={deleteOrder} />
       <Products data={tovar} findIdProduct={findIdProduct} />
       <Footer />
     </div>

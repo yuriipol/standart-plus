@@ -16,3 +16,16 @@
   font-weight: 600;
   color: red;
 }
+.del {
+  position: relative;
+  float: right;
+  color: red;
+  top: -25px;
+  cursor: pointer;
+  transition: transform 500ms ease;
+  &:hover,
+  &:focus {
+    transform: scale(1.4);
+    color: rgb(245, 146, 8);
+  }
+}

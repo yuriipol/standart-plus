@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Products from "../../Components/Products/Products";
+import Categories from "../../Components/Categories/Categories";
 import { products } from "../../Shared/Servises/products";
 
 import s from "./HomePage.module.scss";
@@ -10,6 +11,7 @@ import s from "./HomePage.module.scss";
 const HomePage = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const [tovar, setTovar] = useState([]);
+  const [filteredByCategories, setfilteredByCategories] = useState([]);
   // const [isArray, setIsArray] = useState(false);
 
   const addInputdata = (products) => {
@@ -40,11 +42,22 @@ const HomePage = () => {
     const delProduct = searchProducts.filter((item) => item.id !== id);
     setSearchProducts(delProduct);
   };
+  const chooseCategory = (category) => {
+    const filteredList = tovar.filter((item) =>
+      item.category.toLowerCase().includes(category.toLowerCase())
+    );
+    setfilteredByCategories(filteredList);
+    if (category === "все") {
+      setfilteredByCategories(tovar);
+    }
+    // console.log(category);
+  };
   return (
     <div className="container">
       <h1 className={s.title}>"HOME PAGE"</h1>
       <Header searchProducts={searchProducts} deleteOrder={deleteOrder} />
-      <Products data={tovar} findIdProduct={findIdProduct} />
+      <Categories chooseCategory={chooseCategory} />
+      <Products data={filteredByCategories} findIdProduct={findIdProduct} />
       <Footer />
     </div>
   );

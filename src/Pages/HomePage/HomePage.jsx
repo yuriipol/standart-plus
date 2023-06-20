@@ -12,7 +12,7 @@ const HomePage = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const [tovar, setTovar] = useState([]);
   const [filteredByCategories, setfilteredByCategories] = useState([]);
-  // const [isArray, setIsArray] = useState(false);
+  // console.log(filteredByCategories);
 
   const addInputdata = (products) => {
     const data = JSON.parse(products);
@@ -20,11 +20,11 @@ const HomePage = () => {
       item.id = nanoid();
     }
     setTovar(data);
+    setfilteredByCategories(data);
   };
   useEffect(() => {
     addInputdata(products);
   }, []);
-  // console.log(tovar);
 
   const findIdProduct = (event) => {
     const findProduct = tovar.find(
@@ -52,6 +52,7 @@ const HomePage = () => {
     }
     // console.log(category);
   };
+
   return (
     <div className="container">
       <h1 className={s.title}>"HOME PAGE"</h1>

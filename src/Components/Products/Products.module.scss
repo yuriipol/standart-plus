@@ -32,6 +32,7 @@
 .size,
 .add_to_card {
   margin: 10px 20px;
+  font-size: 20px;
 }
 .price {
   color: #1f8714;
@@ -54,4 +55,13 @@
   &:focus {
     transform: scale(1.5) translateY(-5px);
   }
+}
+.titleModalDetails {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+.imageDetails {
+  margin: auto;
+  width: 300px;
 }

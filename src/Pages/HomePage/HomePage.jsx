@@ -4,6 +4,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Products from "../../Components/Products/Products";
 import Categories from "../../Components/Categories/Categories";
+import Modal from "../../Components/Modal/Modal";
 import { products } from "../../Shared/Servises/products";
 
 import s from "./HomePage.module.scss";
@@ -12,7 +13,7 @@ const HomePage = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const [tovar, setTovar] = useState([]);
   const [filteredByCategories, setfilteredByCategories] = useState([]);
-  // console.log(filteredByCategories);
+  const [isShow, setIsShow] = useState(false);
 
   const addInputdata = (products) => {
     const data = JSON.parse(products);
@@ -53,13 +54,27 @@ const HomePage = () => {
     // console.log(category);
   };
 
+  const toggleModal = () => {
+    setIsShow(!isShow);
+    console.log(isShow);
+  };
+
   return (
     <div className="container">
       <h1 className={s.title}>"HOME PAGE"</h1>
       <Header searchProducts={searchProducts} deleteOrder={deleteOrder} />
       <Categories chooseCategory={chooseCategory} />
-      <Products data={filteredByCategories} findIdProduct={findIdProduct} />
+      <Products
+        toggleModal={toggleModal}
+        data={filteredByCategories}
+        findIdProduct={findIdProduct}
+      />
       <Footer />
+      {isShow && (
+        <Modal onClose={toggleModal}>
+          <h2 className={s.titleModalDetails}>Детальна інформація</h2>
+        </Modal>
+      )}
     </div>
   );
 };

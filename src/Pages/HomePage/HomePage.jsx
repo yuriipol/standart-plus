@@ -1,29 +1,38 @@
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Products from "../../Components/Products/Products";
 import Categories from "../../Components/Categories/Categories";
-import { products } from "../../Shared/Servises/products";
+// import { products } from "../../Shared/Servises/products";
 
 import s from "./HomePage.module.scss";
+import { getProducts } from "../../Shared/Servises/api";
 
 const HomePage = () => {
   const [searchProducts, setSearchProducts] = useState([]);
   const [tovar, setTovar] = useState([]);
   const [filteredByCategories, setfilteredByCategories] = useState([]);
+  const [page, setPage] = useState(1);
+  // console.log(tovar);
 
-  const addInputdata = (products) => {
-    const data = JSON.parse(products);
-    for (const item of data) {
-      item.id = nanoid();
-    }
-    setTovar(data);
-    setfilteredByCategories(data);
-  };
+  // const addInputdata = (products) => {
+  //   const data = JSON.parse(products);
+  //   for (const item of data) {
+  //     item.id = nanoid();
+  //   }
+  //   setTovar(data);
+  //   setfilteredByCategories(data);
+  // };
   useEffect(() => {
-    addInputdata(products);
-  }, []);
+    // addInputdata(products);
+    const productsItems = async () => {
+      const data = await getProducts(page);
+      setTovar(data);
+      setfilteredByCategories(data);
+    };
+    productsItems();
+  }, [page]);
 
   const findIdProduct = (event) => {
     const findProduct = tovar.find(

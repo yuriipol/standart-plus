@@ -55,7 +55,7 @@ const HomePage = () => {
       item.category.toLowerCase().includes(category.toLowerCase())
     );
     setfilteredByCategories(filteredList);
-    if (category === "все") {
+    if (category === "всі") {
       setfilteredByCategories(tovar);
     }
     // console.log(category);

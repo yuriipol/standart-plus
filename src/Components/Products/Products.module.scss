@@ -18,6 +18,7 @@
   }
 }
 .image {
+  max-height: 350px;
   border-radius: 10px 10px 0 0;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
@@ -63,5 +64,6 @@
 }
 .imageDetails {
   margin: auto;
-  width: 300px;
+  width: 250px;
+  max-height: 300px;
 }

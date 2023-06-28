@@ -14,5 +14,11 @@ export const getProducts = async (page) => {
       page: page,
     },
   });
+
+  return data;
+};
+export const changeProduct = async (id, product) => {
+  const { data } = await instance.put(`products/${id}`, product);
+  console.log(data);
   return data;
 };

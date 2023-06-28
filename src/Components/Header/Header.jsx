@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import s from "./Header.module.scss";
 import { FaShoppingCart, FaWindowClose } from "react-icons/fa";
 import Modal from "../Modal/Modal";
@@ -22,7 +24,10 @@ const Header = ({ searchProducts, deleteOrder }) => {
       <ul className={s.nav}>
         <li className={s.nav_item}>Про нас</li>
         <li className={s.nav_item}>Контакти</li>
-        <li className={s.nav_item}>Кабінет</li>
+        <li className={s.nav_item}>
+          <NavLink to="login">Кабінет</NavLink>
+          <Outlet />
+        </li>
       </ul>
       <FaShoppingCart
         className={

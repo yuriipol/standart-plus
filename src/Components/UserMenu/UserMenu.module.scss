@@ -1,0 +1,36 @@
+@import "../../Shared/styles/index";
+
+.containerLogOut {
+  margin-left: 30px;
+  padding: 15px 20px;
+}
+.logout {
+  margin: 0 auto;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+  border: 2px solid red;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: 20px;
+  &:hover,
+  &:focus {
+    box-shadow: red 180px 0px 1px inset;
+    font-weight: bold;
+    border-color: white;
+  }
+}
+.userName {
+  margin-right: 10px;
+  color: white;
+
+  font-size: 12px;
+  text-shadow: 1px 1px 5px black;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 20px;
+  }
+}

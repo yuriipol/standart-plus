@@ -1,0 +1,28 @@
+.block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.label {
+  padding: 10px 15px;
+  color: white;
+  font-size: 20px;
+  text-shadow: 1px 1px 5px black;
+}
+.input {
+  display: block;
+  width: 100%;
+  padding: 0 15px;
+  margin-top: 5px;
+  border-width: 0;
+  line-height: 40px;
+  border-radius: 10px;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+::placeholder {
+  color: white;
+  opacity: 0.8;
+}

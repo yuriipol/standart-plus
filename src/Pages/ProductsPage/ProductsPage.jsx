@@ -1,9 +1,15 @@
+import { nanoid } from "nanoid";
 import UserMenu from "../../Components/UserMenu/UserMenu";
 import s from "./ProductsPage.module.scss";
 import Modal from "../../Components/Modal/Modal";
-import { getProducts, changeProduct } from "../../Shared/Servises/api";
+import {
+  getProducts,
+  changeProduct,
+  addProduct,
+} from "../../Shared/Servises/api";
 import { useState, useEffect } from "react";
 import ChangeForm from "../../Components/ChangeForm/ChangeForm";
+import AddProductForm from "../../Components/AddProductForm/AddProductForm";
 
 const ProductsPage = () => {
   const [isShow, setIsShow] = useState(false);
@@ -11,12 +17,13 @@ const ProductsPage = () => {
   const [page, setPage] = useState(1);
   const [searchInfo, setSearchInfo] = useState({});
   const [findProduct, setFindProduct] = useState(null);
-  // console.log(findProduct);
+  console.log(data);
 
   useEffect(() => {
     const productsItems = async () => {
       const data = await getProducts(page);
-      setData(data);
+
+      setData((prevstate) => [...prevstate, ...data]);
       setFindProduct(false);
     };
     productsItems();
@@ -31,18 +38,22 @@ const ProductsPage = () => {
     setSearchInfo(findInfo);
   };
   const onSubmit = (id, product) => {
-    // setFindProduct(true);
     changeProduct(id, product);
-    // console.log(id, product);
-    // const data = getProducts(page);
-    // setData(data);
 
     setFindProduct(true);
-    // console.log(findProduct);
+  };
+  const addToProducts = (product) => {
+    addProduct(product);
+    console.log(product);
+    setFindProduct(true);
+  };
+
+  const onClickLoadVore = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   const productItem = data?.map(({ id, gallery, name, country, price }) => (
-    <li className={s.productItem} key={id} id={id} onClick={findDetails}>
+    <li className={s.productItem} key={nanoid()} id={id} onClick={findDetails}>
       <div onClick={toggleModal} className={s.container}>
         <img className={s.image} src={gallery} alt={name} id={id} />
         <h2 className={s.name}>{name}</h2>
@@ -59,7 +70,11 @@ const ProductsPage = () => {
         <h1>Products Page</h1>;
         <UserMenu />
       </div>
+      <AddProductForm onSubmit={addToProducts} />
       <ul className={s.products}>{productItem}</ul>
+      <button type="button" className={s.loadMore} onClick={onClickLoadVore}>
+        Load more
+      </button>
       {isShow && (
         <Modal onClose={toggleModal}>
           <div className={s.modal}>

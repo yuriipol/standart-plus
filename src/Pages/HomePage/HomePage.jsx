@@ -4,7 +4,6 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Products from "../../Components/Products/Products";
 import Categories from "../../Components/Categories/Categories";
-// import { products } from "../../Shared/Servises/products";
 
 import s from "./HomePage.module.scss";
 import { getProducts } from "../../Shared/Servises/api";
@@ -14,22 +13,14 @@ const HomePage = () => {
   const [tovar, setTovar] = useState([]);
   const [filteredByCategories, setfilteredByCategories] = useState([]);
   const [page, setPage] = useState(1);
-  // console.log(tovar);
 
-  // const addInputdata = (products) => {
-  //   const data = JSON.parse(products);
-  //   for (const item of data) {
-  //     item.id = nanoid();
-  //   }
-  //   setTovar(data);
-  //   setfilteredByCategories(data);
-  // };
+  // console.log(filteredByCategories);
+
   useEffect(() => {
-    // addInputdata(products);
     const productsItems = async () => {
       const data = await getProducts(page);
-      setTovar(data);
-      setfilteredByCategories(data);
+      setTovar((prevstate) => [...prevstate, ...data]);
+      setfilteredByCategories((prevstate) => [...prevstate, ...data]);
     };
     productsItems();
   }, [page]);
@@ -58,7 +49,9 @@ const HomePage = () => {
     if (category === "всі") {
       setfilteredByCategories(tovar);
     }
-    // console.log(category);
+  };
+  const onClickLoadVore = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -67,6 +60,9 @@ const HomePage = () => {
       <Header searchProducts={searchProducts} deleteOrder={deleteOrder} />
       <Categories chooseCategory={chooseCategory} />
       <Products data={filteredByCategories} findIdProduct={findIdProduct} />
+      <button type="button" className={s.loadMore} onClick={onClickLoadVore}>
+        Load more
+      </button>
       <Footer />
     </div>
   );

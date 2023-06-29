@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import s from "./Products.module.scss";
 import Modal from "../../Components/Modal/Modal";
 import { useState } from "react";
@@ -16,7 +17,7 @@ const Products = ({ data, findIdProduct }) => {
   };
 
   const productItem = data?.map(({ id, gallery, name, country, price }) => (
-    <li className={s.productItem} key={id} id={id}>
+    <li className={s.productItem} key={nanoid()} id={id}>
       <div onClick={toggleModal}>
         <img
           className={s.image}

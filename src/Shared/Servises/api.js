@@ -19,6 +19,12 @@ export const getProducts = async (page) => {
 };
 export const changeProduct = async (id, product) => {
   const { data } = await instance.put(`products/${id}`, product);
-  console.log(data);
+  // console.log(data);
+  return data;
+};
+
+export const addProduct = async (product) => {
+  const { data } = await instance.post(`products`, product);
+  // console.log(data);
   return data;
 };

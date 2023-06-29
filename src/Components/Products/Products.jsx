@@ -3,7 +3,7 @@ import s from "./Products.module.scss";
 import Modal from "../../Components/Modal/Modal";
 import { useState } from "react";
 
-const Products = ({ data, findIdProduct }) => {
+const Products = ({ data, findIdProduct, onClickLoadVore }) => {
   const [isShow, setIsShow] = useState(false);
   const [searchInfo, setSearchInfo] = useState({});
   // console.log(searchInfo);
@@ -16,29 +16,35 @@ const Products = ({ data, findIdProduct }) => {
     setSearchInfo(findInfo);
   };
 
-  const productItem = data?.map(({ id, gallery, name, country, price }) => (
-    <li className={s.productItem} key={nanoid()} id={id}>
-      <div onClick={toggleModal}>
-        <img
-          className={s.image}
-          src={gallery}
-          alt={name}
-          id={id}
-          onClick={findDetails}
-        />
-      </div>
-      <h2 className={s.name}>{name}</h2>
-      <h3 className={s.country}>{country}</h3>
-      <b className={s.price}>Ціна: {price} грн.</b>
-      <div className={s.add_to_card} onClick={findIdProduct} id={id}>
-        +
-      </div>
-    </li>
-  ));
+  const productItem = data?.map(
+    ({ id, gallery, name, country, price, category }) => (
+      <li className={s.productItem} key={nanoid()} id={id}>
+        <div onClick={toggleModal}>
+          <img
+            className={s.image}
+            src={gallery}
+            alt={name}
+            id={id}
+            onClick={findDetails}
+          />
+        </div>
+        <h2 className={s.name}>{name}</h2>
+        <h3 className={s.country}>{country}</h3>
+        <h3 className={s.country}>{category}</h3>
+        <b className={s.price}>Ціна: {price} грн.</b>
+        <div className={s.add_to_card} onClick={findIdProduct} id={id}>
+          +
+        </div>
+      </li>
+    )
+  );
   const { id, gallery, name, country, description, price } = searchInfo;
   return (
     <main>
       <ul className={s.products}>{productItem}</ul>
+      <button type="button" className={s.loadMore} onClick={onClickLoadVore}>
+        Load more
+      </button>
       {isShow && (
         <Modal onClose={toggleModal}>
           <h2 className={s.titleModalDetails}>Детальна інформація</h2>

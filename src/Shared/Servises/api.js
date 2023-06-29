@@ -28,3 +28,8 @@ export const addProduct = async (product) => {
   // console.log(data);
   return data;
 };
+export const delProduct = async (id) => {
+  const { data } = await instance.delete(`products/${id}`);
+  console.log(data);
+  return data;
+};

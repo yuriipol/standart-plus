@@ -59,10 +59,11 @@ const HomePage = () => {
       <h1 className={s.title}>"HOME PAGE"</h1>
       <Header searchProducts={searchProducts} deleteOrder={deleteOrder} />
       <Categories chooseCategory={chooseCategory} />
-      <Products data={filteredByCategories} findIdProduct={findIdProduct} />
-      <button type="button" className={s.loadMore} onClick={onClickLoadVore}>
-        Load more
-      </button>
+      <Products
+        data={filteredByCategories}
+        findIdProduct={findIdProduct}
+        onClickLoadVore={onClickLoadVore}
+      />
       <Footer />
     </div>
   );

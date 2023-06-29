@@ -48,6 +48,7 @@ const AddProductForm = ({ onSubmit }) => {
       price: parseFloat(price),
       description,
       country,
+      category,
     };
     // console.log(data);
     onSubmit(data);

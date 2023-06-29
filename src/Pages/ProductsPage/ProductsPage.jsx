@@ -6,6 +6,7 @@ import {
   getProducts,
   changeProduct,
   addProduct,
+  delProduct,
 } from "../../Shared/Servises/api";
 import { useState, useEffect } from "react";
 import ChangeForm from "../../Components/ChangeForm/ChangeForm";
@@ -23,7 +24,7 @@ const ProductsPage = () => {
     const productsItems = async () => {
       const data = await getProducts(page);
 
-      setData((prevstate) => [...prevstate, ...data]);
+      setData(data);
       setFindProduct(false);
     };
     productsItems();
@@ -47,6 +48,11 @@ const ProductsPage = () => {
     console.log(product);
     setFindProduct(true);
   };
+  const deleteProduct = (id) => {
+    delProduct(id);
+    setFindProduct(true);
+    // console.log(id);
+  };
 
   const onClickLoadVore = () => {
     setPage((prevPage) => prevPage + 1);
@@ -60,6 +66,13 @@ const ProductsPage = () => {
         <h3 className={s.country}>{country}</h3>
         <b className={s.price}>Ціна: {price} грн.</b>
       </div>
+      <button
+        type="button"
+        className={s.deleteProduct}
+        onClick={() => deleteProduct(id)}
+      >
+        delete
+      </button>
     </li>
   ));
   const { id, gallery, name, price } = searchInfo;

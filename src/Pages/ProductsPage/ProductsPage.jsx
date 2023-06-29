@@ -17,18 +17,17 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [searchInfo, setSearchInfo] = useState({});
-  const [findProduct, setFindProduct] = useState(null);
+  const [findProduct, setFindProduct] = useState(false);
   console.log(data);
 
   useEffect(() => {
     const productsItems = async () => {
       const data = await getProducts(page);
 
-      setData(data);
-      setFindProduct(false);
+      setData((prevstate) => [...prevstate, ...data]);
     };
     productsItems();
-  }, [page, findProduct]);
+  }, [page]);
 
   const toggleModal = () => {
     setIsShow(!isShow);

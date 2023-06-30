@@ -1,0 +1,21 @@
+.addForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+}
+.addComponent:not(:last-child) {
+  margin-right: 40px;
+}
+.add {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  &:hover {
+    color: #fff;
+    background-color: green;
+    border: 2px solid black;
+  }
+}

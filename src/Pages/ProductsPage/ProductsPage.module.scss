@@ -1,6 +1,25 @@
+.bgcolor {
+  background-image: linear-gradient(
+    40deg,
+    hsl(118deg 100% 20%) 0%,
+    hsl(101deg 100% 23%) 10%,
+    hsl(92deg 100% 25%) 20%,
+    hsl(85deg 100% 28%) 30%,
+    hsl(80deg 100% 31%) 40%,
+    hsl(75deg 100% 33%) 50%,
+    hsl(70deg 100% 36%) 60%,
+    hsl(66deg 100% 38%) 70%,
+    hsl(62deg 100% 41%) 80%,
+    hsl(58deg 100% 45%) 90%,
+    hsl(55deg 100% 50%) 100%
+  );
+}
 .header {
   display: flex;
   justify-content: space-between;
+}
+.products {
+  padding: 20px;
 }
 .productItem {
   display: flex;
@@ -34,4 +53,19 @@
 .nameModal,
 .priceModal {
   font-size: 15px;
+}
+.loadMore {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  &:hover {
+    color: #fff;
+    background-color: green;
+    border: 2px solid black;
+  }
+}
+.deleteProduct {
+  padding: 5px 10px;
 }

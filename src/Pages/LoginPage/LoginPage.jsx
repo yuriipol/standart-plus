@@ -3,6 +3,7 @@ import { loginOperation } from "../../Shared/Redux/auth/auth-operations";
 import { Navigate } from "react-router-dom";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import useAuth from "../../Shared/hooks/useAuth";
+import s from "./LoginPage.module.scss";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,9 @@ const LoginPage = () => {
   }
   return (
     <div className="container">
-      <LoginForm onSubmit={onLogin} />
+      <div className={s.bgcolor}>
+        <LoginForm onSubmit={onLogin} />
+      </div>
     </div>
   );
 };

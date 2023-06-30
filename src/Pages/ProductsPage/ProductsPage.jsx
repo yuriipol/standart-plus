@@ -77,7 +77,7 @@ const ProductsPage = () => {
   const { id, gallery, name, price } = searchInfo;
 
   return (
-    <>
+    <div className={s.bgcolor}>
       <div className={s.header}>
         <h1>Products Page</h1>;
         <UserMenu />
@@ -97,7 +97,7 @@ const ProductsPage = () => {
           <ChangeForm onSubmit={onSubmit} id={id} toggleModal={toggleModal} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 

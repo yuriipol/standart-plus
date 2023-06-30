@@ -76,58 +76,70 @@ const AddProductForm = ({ onSubmit }) => {
   return (
     <form onSubmit={hendleSubmit} className={s.form}>
       <div className={s.addForm}>
-        <select
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
-          className={s.select}
-        >
-          {optionsCategories}
-        </select>
-        <TextField
-          value={name}
-          onChange={hendleInputChange}
-          label="Назва продукту"
-          name="name"
-          placeholder="введіть назву продукту"
-          required={true}
-          type="text"
-        />
-        <TextField
-          value={link}
-          onChange={hendleInputChange}
-          label="фото продукту"
-          name="link"
-          placeholder="введіть ссилку"
-          required={true}
-          type="text"
-        />
-        <TextField
-          value={price}
-          onChange={hendleInputChange}
-          label="Ціна продукту"
-          name="price"
-          placeholder="введіть ціну продукту"
-          required={true}
-          type="text"
-        />
-        <TextField
-          value={description}
-          onChange={hendleInputChange}
-          label="Опис продукту"
-          name="description"
-          placeholder="введіть опис продукту"
-          required={true}
-          type="text"
-        />
-        <TextField
-          value={country}
-          onChange={hendleInputChange}
-          label="Країна виробник"
-          name="country"
-          placeholder="введіть країну виробника"
-          required={true}
-          type="text"
-        />
+        <div className={s.addComponent}>
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            className={s.select}
+          >
+            {optionsCategories}
+          </select>
+        </div>
+        <div className={s.addComponent}>
+          <TextField
+            value={name}
+            onChange={hendleInputChange}
+            label="Назва продукту"
+            name="name"
+            placeholder="введіть назву продукту"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div className={s.addComponent}>
+          <TextField
+            value={link}
+            onChange={hendleInputChange}
+            label="фото продукту"
+            name="link"
+            placeholder="введіть ссилку"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div className={s.addComponent}>
+          <TextField
+            value={price}
+            onChange={hendleInputChange}
+            label="Ціна продукту"
+            name="price"
+            placeholder="введіть ціну продукту"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div className={s.addComponent}>
+          <TextField
+            value={description}
+            onChange={hendleInputChange}
+            label="Опис продукту"
+            name="description"
+            placeholder="введіть опис продукту"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div className={s.addComponent}>
+          <TextField
+            value={country}
+            onChange={hendleInputChange}
+            label="Країна виробник"
+            name="country"
+            placeholder="введіть країну виробника"
+            required={true}
+            type="text"
+          />
+        </div>
       </div>
       <button type="submit" className={s.add}>
         Додати товар

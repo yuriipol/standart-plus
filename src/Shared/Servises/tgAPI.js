@@ -12,6 +12,6 @@ export const sendMassege = async (message) => {
     chat_id: "-1001969070378",
     text: message,
   });
-  console.log(data);
+  //   console.log(data);
   return data;
 };

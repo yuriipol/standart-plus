@@ -5,6 +5,10 @@ import s from "./Header.module.scss";
 import { FaShoppingCart, FaWindowClose } from "react-icons/fa";
 import Modal from "../Modal/Modal";
 import Order from "../Order/Order";
+import Button from "react-bootstrap/Button";
+
+import TextField from "../TextField/TextField";
+import { fields } from "../TextField/fields";
 
 const Header = ({ searchProducts, deleteOrder }) => {
   let sum = 0;
@@ -12,6 +16,42 @@ const Header = ({ searchProducts, deleteOrder }) => {
 
   const [cartOpen, setCartOpen] = useState(false);
   // console.log(cartOpen);
+
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  // console.log(name, number);
+
+  const hendleInputChange = (event) => {
+    const { name, value } = event.currentTarget;
+
+    switch (name) {
+      case "name":
+        setName(value);
+        break;
+      case "number":
+        setNumber(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const hendleSubmit = (event) => {
+    event.preventDefault();
+    const user = {
+      name,
+      number,
+    };
+    console.log(user);
+    let messege = <b>bold</b>;
+
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setName("");
+    setNumber("");
+  };
 
   const toggleModal = () => {
     setCartOpen(!cartOpen);
@@ -44,12 +84,35 @@ const Header = ({ searchProducts, deleteOrder }) => {
             <h2 className={s.title}>КОРЗИНА</h2>
 
             {searchProducts.length > 0 ? (
-              <ul>
-                {searchProducts?.map((item) => (
-                  <Order key={item.id} item={item} deleteOrder={deleteOrder} />
-                ))}
+              <div className={s.cartContainer}>
+                <ul>
+                  {searchProducts?.map((item) => (
+                    <Order
+                      key={item.id}
+                      item={item}
+                      deleteOrder={deleteOrder}
+                    />
+                  ))}
+                </ul>
                 <p className={s.sum}>Загальна сума: {sum.toFixed(2)} грн.</p>
-              </ul>
+                <form id="tg" onSubmit={hendleSubmit}>
+                  <div className={s.cartForm}>
+                    <TextField
+                      value={name}
+                      onChange={hendleInputChange}
+                      {...fields.name}
+                    />
+                    <TextField
+                      value={number}
+                      onChange={hendleInputChange}
+                      {...fields.number}
+                    />
+                  </div>
+                  <Button type="submit" variant="success">
+                    Відправити
+                  </Button>
+                </form>
+              </div>
             ) : (
               <h2 className={s.pusto}>Товари відсутні</h2>
             )}

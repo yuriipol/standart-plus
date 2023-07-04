@@ -14,7 +14,7 @@ const HomePage = () => {
   const [filteredByCategories, setfilteredByCategories] = useState([]);
   const [page, setPage] = useState(1);
 
-  // console.log(filteredByCategories);
+  console.log(searchProducts);
 
   useEffect(() => {
     const productsItems = async () => {

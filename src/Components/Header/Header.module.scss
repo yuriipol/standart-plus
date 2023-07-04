@@ -88,4 +88,13 @@
   float: left;
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 15px;
+}
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+}
+.cartForm {
+  display: flex;
+  flex-direction: column;
 }

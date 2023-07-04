@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 
 import TextField from "../TextField/TextField";
 import { fields } from "../TextField/fields";
+import { sendMassege } from "../../Shared/Servises/tgAPI";
 
 const Header = ({ searchProducts, deleteOrder }) => {
   let sum = 0;
@@ -38,12 +39,16 @@ const Header = ({ searchProducts, deleteOrder }) => {
 
   const hendleSubmit = (event) => {
     event.preventDefault();
-    const user = {
-      name,
-      number,
-    };
-    console.log(user);
-    let messege = <b>bold</b>;
+    // const user = {
+    //   name,
+    //   number,
+    // };
+    // console.log(user);
+    let messege = `<b>Замовлення з сайту!</b>\n`;
+    messege += `<b>Ім'я замовника: ${name}</b>\n`;
+    messege += `<b>Телефон замовника: ${number}</b>\n`;
+    console.log(messege);
+    sendMassege(messege);
 
     resetForm();
   };

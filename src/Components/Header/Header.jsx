@@ -20,8 +20,10 @@ const Header = ({ searchProducts, deleteOrder }) => {
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  // console.log(name, number);
+  console.log(searchProducts);
 
+  const productItem = searchProducts?.map((item) => item.name);
+  console.log(productItem);
   const hendleInputChange = (event) => {
     const { name, value } = event.currentTarget;
 
@@ -39,15 +41,13 @@ const Header = ({ searchProducts, deleteOrder }) => {
 
   const hendleSubmit = (event) => {
     event.preventDefault();
-    // const user = {
-    //   name,
-    //   number,
-    // };
-    // console.log(user);
+
     let messege = `<b>Замовлення з сайту!</b>\n`;
     messege += `<b>Ім'я замовника: ${name}</b>\n`;
     messege += `<b>Телефон замовника: ${number}</b>\n`;
-    console.log(messege);
+    messege += `<b>Список товарів: ${productItem}</b>\n`;
+    messege += `<b>Загальна сума замовлення: ${sum} грн.</b>\n`;
+
     sendMassege(messege);
 
     resetForm();

@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import TextField from "../TextField/TextField";
 import { fields } from "../TextField/fields";
 import { sendMassege } from "../../Shared/Servises/tgAPI";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = ({ searchProducts, deleteOrder }) => {
   let sum = 0;
@@ -51,6 +53,10 @@ const Header = ({ searchProducts, deleteOrder }) => {
     sendMassege(messege);
 
     resetForm();
+    toggleModal();
+    toast.success("Дякуємо за замовлення, ми Вам перетелефонуємо !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   const resetForm = () => {
@@ -61,9 +67,11 @@ const Header = ({ searchProducts, deleteOrder }) => {
   const toggleModal = () => {
     setCartOpen(!cartOpen);
   };
+
   // console.log(searchProducts);
   return (
     <header>
+      <ToastContainer />
       <span className={s.logo}>Standart +</span>
 
       <ul className={s.nav}>

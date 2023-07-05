@@ -78,7 +78,7 @@ const Header = ({ searchProducts, deleteOrder }) => {
         <li className={s.nav_item}>Про нас</li>
         <li className={s.nav_item}>Контакти</li>
         <li className={s.nav_item}>
-          <NavLink to="login">Кабінет</NavLink>
+          <NavLink to="/login">Кабінет</NavLink>
           <Outlet />
         </li>
       </ul>
